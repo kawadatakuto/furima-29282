@@ -37,7 +37,7 @@ Things you may want to cover:
 | first_name      | string   | null: false |
 | family_name_kana| string   | null: false |
 | first_name_kana | string   | null: false |
-| birth_day       | datetime | null: false |
+| birth_day       | date     | null: false |
 
 ### Association
 
@@ -53,22 +53,27 @@ Things you may want to cover:
 | category       | integer    | null: false                        |
 | status         | integer    | null: false                        |
 | delivery_fee   | integer    | null: false                        |
+| delivery_area  | integer    | null: false                        |
+| delivery_times | integer    | null: false                        |
 | selling_price  | integer    | null: false                        |
 | user           | references | null: false, foreign_key: true     |
 
 
 ### Association
 
-- has_many :users
+- belongs_to :users
+- belongs_to :buy_items
 
 ## buy_items テーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | items           | references | null: false, foreign_key: true |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
 
+- belongs_to :items
 - belongs_to :users
 - has_one:delivery_address
 
@@ -76,11 +81,11 @@ Things you may want to cover:
 
 | Column               | Type       | Options                        |
 | -------------------- | ---------- |------------------------------- |
-| postal_code          | string     | null: false                    |
-| prefectures          | string     | null: false                    |
+| postal_code          | integer    | null: false                    |
+| prefectures          | integer    | null: false                    |
 | munisicipality       | string     | null: false                    |
 | address              | string     | null: false                    |
-| building_name        | string     | null: false                    |
+| building_name        | string     | null: true                    |
 | phone_number         | string     | null: false                    |
 | user                 | references | null: false, foreign_key: true |
 
