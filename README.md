@@ -68,7 +68,7 @@ Things you may want to cover:
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| items           | references | null: false, foreign_key: true |
+| item            | references | null: false, foreign_key: true |
 | user            | references | null: false, foreign_key: true |
 
 ### Association
@@ -81,11 +81,11 @@ Things you may want to cover:
 
 | Column               | Type       | Options                        |
 | -------------------- | ---------- |------------------------------- |
-| postal_code          | integer    | null: false                    |
+| postal_code          | string     | null: false                    |
 | prefectures          | integer    | null: false                    |
 | munisicipality       | string     | null: false                    |
 | address              | string     | null: false                    |
-| building_name        | string     | null: true                    |
+| building_name        | string     |                                |
 | phone_number         | string     | null: false                    |
 | user                 | references | null: false, foreign_key: true |
 
