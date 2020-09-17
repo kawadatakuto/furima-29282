@@ -49,7 +49,7 @@ Things you may want to cover:
 | Column         | Type       | Options                            |
 | -------------- | ---------- | ---------------------------------- |
 | name           | string     | null: false                        |
-| explain        | string     | null: false                        |
+| explain        | text       | null: false                        |
 | category       | integer    | null: false                        |
 | status         | integer    | null: false                        |
 | delivery_fee   | integer    | null: false                        |
@@ -61,8 +61,8 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :users
-- belongs_to :buy_items
+- belongs_to :user
+- has_one :buy_item
 
 ## buy_items テーブル
 
@@ -73,8 +73,8 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :items
-- belongs_to :users
+- belongs_to :item
+- belongs_to :user
 - has_one:delivery_address
 
 ## delivery_address テーブル
@@ -92,5 +92,5 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :buy_items
+- belongs_to :buy_item
 
