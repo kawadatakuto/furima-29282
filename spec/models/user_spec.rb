@@ -6,6 +6,10 @@ RSpec.describe User, type: :model do
       @user = FactoryBot.build(:user)
     end
 
+    it "全て正常" do  
+      expect(@user.valid?).to eq true  
+    end  
+
     it "nicknameが空だと登録できない" do
       @user.nickname = ""
       @user.valid?
@@ -37,18 +41,13 @@ RSpec.describe User, type: :model do
     end
 
     it "emailに@がないと登録ができない" do
-      @user.email = "@"
+      @user.email = ""
       @user.valid?
-      expect(@user.errors.full_messages).to include("You can't register without @ in the email")
+      expect(@user.errors.full_messages).to include("Email You can't register without @ in the email")
+    end
 
     it "nameとemail、passwordとpassword_confirmationが存在すれば登録できること" do
       expect(@user).to be_valid
-    end
-
-    it "nameが空では登録できないこと" do
-      @user.name = nil
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Name can't be blank")
     end
 
     it "emailが空では登録できないこと" do
@@ -67,12 +66,6 @@ RSpec.describe User, type: :model do
       @user.password_confirmation = ""
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
-    end
-
-    it "passwordが6文字以上であれば登録できること" do
-      @user.password = "123456"
-      @user.password_confirmation = "123456"
-      expect(@user).to be_valid
     end
 
     it "passwordが5文字以下であれば登録できないこと" do
