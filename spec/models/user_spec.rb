@@ -12,6 +12,35 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Nickname can't be blank")
     end
 
+    it "family_nameが空だと登録できない" do
+      @user.family_name = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name can't be blank")
+    end
+
+    it "first_nameが空だと登録できない" do
+      @user.first_name = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name can't be blank")
+    end
+
+    it "family_name_kanaが空だと登録できない" do
+      @user.family_name_kana = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name kana can't be blank")
+    end
+
+    it "first_name_kanaが空だと登録できない" do
+      @user.first_name_kana = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana can't be blank")
+    end
+
+    it "emailに@がないと登録ができない" do
+      @user.email = "@"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("You can't register without @ in the email")
+
     it "nameとemail、passwordとpassword_confirmationが存在すれば登録できること" do
       expect(@user).to be_valid
     end
