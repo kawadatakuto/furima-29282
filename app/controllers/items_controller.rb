@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   before_action :move_to_index, except: [:index, :show]
   
   def index
@@ -12,4 +13,5 @@ class ItemsController < ApplicationController
       redirect_to user_session_path
     end
   end
+
 end
