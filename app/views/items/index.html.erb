@@ -132,6 +132,8 @@
         <div class='item-img-content'>
           <%= image_tag "item-sample.png", class: "item-img" %>
 
+          <%#画像を表示するための記述= image_tag item.image,variant(resize:'500x500'), class: 'message-image' if message.image.attached? %>
+
           <%# 商品が売れていればsold outを表示しましょう %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
