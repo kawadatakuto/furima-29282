@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      redirect_to new_item_path
+      render new_item_path
     end
   end
 
@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
 
   #画像の保存を許可する記述
   def item_params
-    params.permit( :title,:text, :image, :genre_id, :status_id, :delivery_fee_id, :delivery_area_id, :delivery_time_id)
+    params.require(:item).permit( :title,:text, :image, :genre_id, :status_id, :delivery_fee_id, :delivery_area_id, :delivery_time_id, :selling_price).merge(user_id: current_user.id)
   end
 
   def move_to_index
