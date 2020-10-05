@@ -156,6 +156,7 @@
       <% end %>
       
       <%#サンプル商品%>
+    <% if @items.length == 0 %>
       <li class='list'>
         <%= link_to "#" do %>
         <div class='item-img-content'>
@@ -203,13 +204,9 @@
         </div>
         <% end %>
       </li>
-      <%#新規商品投稿%>
-      <%#li class='list'>
-        <%= link_to "#" do %>
-        <%#div class='item-img-content'>
-          <%= image_tag item.image,variant(resize:'500x500'), class: 'item-image' if item.image.attached? %>
       <%# //商品がある場合は表示されないようにしましょう %>
       <%# /商品がない場合のダミー %>
+    <% end %>
     </ul>
   </div>
   <%# /商品一覧 %>
