@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   private  # private以下の記述はすべてプライベートメソッドになる
@@ -31,7 +30,7 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-    @items = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def move_to_index
