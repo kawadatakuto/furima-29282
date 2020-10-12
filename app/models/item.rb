@@ -14,7 +14,13 @@ class Item < ApplicationRecord
   validates :title, :text, :image, presence: true
 
   # ジャンルの選択が「--」の時は保存できないようにする
-  validates :status_id, :delivery_area_id, :delivery_fee_id, :delivery_time_id, numericality: { other_than: 1 }
+  with_options numericality: { other_than: 1, message: 'Select' } do
+    validates :genre_id, 
+              :status_id, 
+              :delivery_area_id, 
+              :delivery_fee_id, 
+              :delivery_time_id
+  end
 
   # railsの初期設定のエラーメッセージが表示されているので設定する
   validates :genre_id, presence: { message: 'Category Select' }

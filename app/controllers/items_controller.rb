@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :edit, :update]
   before_action :move_to_index, except: [:index, :show]
 
   def index
@@ -20,6 +20,21 @@ class ItemsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+    unless user_signed_in? && current_user.id == @item.user_id
+      render 'show'
+    end
+  end
+
+  def update
+    @item.update(item_params)
+    if @item.valid?
+      redirect_to item_path
+    else
+      render 'edit'
+    end
   end
 
   private  # private以下の記述はすべてプライベートメソッドになる
