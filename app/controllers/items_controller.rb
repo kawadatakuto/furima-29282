@@ -22,6 +22,12 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to root_path
+  end
+
   def edit
     unless user_signed_in? && current_user.id == @item.user_id
       render 'show'
