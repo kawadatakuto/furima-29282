@@ -8,6 +8,7 @@ class Item < ApplicationRecord
 
   # アソシエーション
   belongs_to :user
+  has_one :buy_item
   has_one_attached :image
 
   # 空の投稿を保存できないようにする
