@@ -1,17 +1,16 @@
 class BuyItemsController < ApplicationController
+  before_action :set_item, only: [:index, :create]
   before_action :move_to_index,
   
   def index
-    @item = Item.find(params[:item_id])
     @delivery_address = DeliveryAddress.new
     @order_form = OrderForm.new
-    if current_user.id == @item.user_id
+    if current_user.id == @item.user_id || @item.buy_item != nil
        redirect_to root_path
     end
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_form = OrderForm.new(order_form_params)
     
     if @order_form.valid?
@@ -36,6 +35,10 @@ class BuyItemsController < ApplicationController
       card: order_form_params[:token],    # カードトークン
       currency:'jpy'                 # 通貨の種類(日本円)
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
   def move_to_index
