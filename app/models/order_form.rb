@@ -2,7 +2,6 @@ class OrderForm
   include ActiveModel::Model
 
   attr_accessor :postal_code, :prefecture, :address, :building_name, :phone_number, :munisicipality, :token, :item_id, :user_id
-  #validates :price, presence: true
   validates :prefecture, :address, :munisicipality, :token, presence: true
 
   with_options presence: true do
