@@ -82,7 +82,7 @@ Things you may want to cover:
 | Column               | Type       | Options                        |
 | -------------------- | ---------- |------------------------------- |
 | postal_code          | string     | null: false                    |
-| prefectures          | integer    | null: false                    |
+| prefecture           | integer    | null: false                    |
 | munisicipality       | string     | null: false                    |
 | address              | string     | null: false                    |
 | building_name        | string     |                                |
