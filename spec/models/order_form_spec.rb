@@ -23,7 +23,7 @@ RSpec.describe OrderForm, type: :model do
     end
 
     it 'postal_codeに-(ハイフン)が含まれていないと購入できない' do
-      @orderform.postalcode = '-'
+      @orderform.postalcode = '1234567'
       @orderform.valid?
       expect(@orderform.errors.full_messages).to include("Is invalid. Include hyphen(-)")
     end
@@ -62,6 +62,12 @@ RSpec.describe OrderForm, type: :model do
       @orderform.phone_number = '0000000000000'
       @orderform.valid?
       expect(@orderform.errors.full_messages).to include("Cannot be purchased if it is 12 digits or more")
+    end
+
+    it 'phone_numberに(-)ハイフンがある場合は登録できない' do
+      @orderform.phone_number = '000-00000-0000'
+      @orderform.valid?
+      expect(@orderform.errors.full_messages).to include("is invalid. Include hyphen(-)")
     end
 
   end

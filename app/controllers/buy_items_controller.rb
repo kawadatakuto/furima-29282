@@ -3,11 +3,11 @@ class BuyItemsController < ApplicationController
   before_action :move_to_index,
   
   def index
+    if current_user.id == @item.user_id || @item.buy_item != nil
+      redirect_to root_path
+   end
     @delivery_address = DeliveryAddress.new
     @order_form = OrderForm.new
-    if current_user.id == @item.user_id || @item.buy_item != nil
-       redirect_to root_path
-    end
   end
 
   def create
