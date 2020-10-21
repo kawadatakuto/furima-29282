@@ -24,5 +24,5 @@ class User < ApplicationRecord
     validates :email
   end
 
-  validates :nickname, presence: true
+  validates :nickname, :birth_day, presence: true
 end
